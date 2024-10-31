@@ -35,6 +35,7 @@ Git
 Clone the Repository
 
 $ git clone https://github.com/amirali108/restaurant_app.git
+
 $ cd restaurant_app
 
 Run with Docker Compose
@@ -58,6 +59,7 @@ Run Locally without Docker
 Create a virtual environment and activate it:
 
 $ python3 -m venv venv
+
 $ source venv/bin/activate
 
 Install the required dependencies:
