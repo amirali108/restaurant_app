@@ -20,11 +20,41 @@ This is a simple restaurant management application built with **Flask**, **SQLAl
 -  **[Git](https://git-scm.com/)**
 
 -  ## **Getting Started**
-$ git clone https://github.com/amirali108/restaurant_app.git
+      $ git clone https://github.com/amirali108/restaurant_app.git
 
-$ cd restaurant_app
+      $ cd restaurant_app
 
 ## **Run with Docker Compose**
-1-**Build and start the containers:**
+1. **Build and start the containers:**
 
-$ docker-compose up -d --build
+       $ docker-compose up -d --build
+
+2. **Access the application in your browser at:**
+-  **Home Page: http://192.168.0.160:8000**
+-  **View Menu: http://192.168.0.160:8000/menu**
+-  **Place an Order: http://192.168.0.160:8000/order**
+-  **View Orders: http://192.168.0.160:8000/view_orders**
+
+-  ## **Run with Docker Compose**
+1. **Create a virtual environment and activate it:**
+
+       $ python3 -m venv venv
+
+       $ source venv/bin/activate
+
+2. **Install the required dependencies:**
+
+       $ pip install -r requirements.txt
+
+3. **Install the required dependencies:**
+   
+       $ python app.py
+
+4. **Install the required dependenciesAccess the application in your browser at http://192.168.0.160:8000.:**
+
+   
+ ## **Project Structure**
+-  **Dockerfile:** Instructions for building the Docker image.
+-  **docker-compose.yml:** Configuration for deploying the application with Docker Compose.
+-  **templates/:** HTML templates for the user interface.
+-  **requirements.txt:** List of Python dependencies.
