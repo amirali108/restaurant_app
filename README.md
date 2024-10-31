@@ -30,10 +30,10 @@ This is a simple restaurant management application built with **Flask**, **SQLAl
        $ docker-compose up -d --build
 
 2. **Access the application in your browser at:**
--  **Home Page: http://192.168.0.160:8000**
--  **View Menu: http://192.168.0.160:8000/menu**
--  **Place an Order: http://192.168.0.160:8000/order**
--  **View Orders: http://192.168.0.160:8000/view_orders**
+-  **Home Page: http://localhost:8000**
+-  **View Menu: http://localhost:8000/menu**
+-  **Place an Order: http://localhost:8000/order**
+-  **View Orders: http://localhost:8000/view_orders**
 
 -  ## **Run with Docker Compose**
 1. **Create a virtual environment and activate it:**
@@ -50,7 +50,7 @@ This is a simple restaurant management application built with **Flask**, **SQLAl
    
        $ python app.py
 
-4. **Install the required dependenciesAccess the application in your browser at http://192.168.0.160:8000.:**
+4. **Install the required dependenciesAccess the application in your browser at http://localhost:8000.:**
 
    
  ## **Project Structure**
