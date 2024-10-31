@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place an Order</title>
+</head>
+<body>
+    <h2>Place an Order</h2>
+    <form id="orderForm">
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" name="customer_name" required><br><br>
+
+        <label for="menuItems">Menu Item IDs (comma-separated):</label>
+        <input type="text" id="menuItems" name="items" required><br><br>
+
+        <button type="button" onclick="placeOrder()">Place Order</button>
+    </form>
+
+    <script>
+        function placeOrder() {
+            const customerName = document.getElementById("customerName").value;
+            const items = document.getElementById("menuItems").value.split(",");
+
+            fetch('/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    customer_name: customerName,
+                    items: items
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Order placed successfully! Order ID: " + data.order_id);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Failed to place order");
+            });
+        }
+    </script>
+</body>
+</html>

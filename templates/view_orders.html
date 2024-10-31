@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Orders</title>
+</head>
+<body>
+    <h2>View Orders</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Items (comma-separated)</th>
+                <th>Status</th>
+                <th>Action</th>
+                <th>Edit Customer Name</th>
+                <th>Edit Items</th>
+            </tr>
+        </thead>
+        <tbody id="ordersTable">
+        </tbody>
+    </table>
+
+    <script>
+        function fetchOrders() {
+            fetch('/orders')
+                .then(response => response.json())
+                .then(orders => {
+                    const ordersTable = document.getElementById('ordersTable');
+                    ordersTable.innerHTML = '';
+
+                    orders.forEach(order => {
+                        const row = document.createElement('tr');
+
+                        row.innerHTML = `
+                            <td>${order.id}</td>
+                            <td><input type="text" value="${order.customer_name}" id="customerName-${order.id}"></td>
+                            <td><input type="text" value="${order.items}" id="items-${order.id}"></td>
+                            <td>${order.status}</td>
+                            <td>
+                                <select id="status-${order.id}" onchange="updateOrder(${order.id})">
+                                    <option value="Pending" ${order.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                    <option value="In Progress" ${order.status === 'In Progress' ? 'selected' : ''}>In Progress</option>
+                                    <option value="Completed" ${order.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                                </select>
+                            </td>
+                            <td><button onclick="updateCustomerName(${order.id})">Update Name</button></td>
+                            <td><button onclick="updateItems(${order.id})">Update Items</button></td>
+                        `;
+
+                        ordersTable.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching orders:", error);
+                });
+        }
+
+        function updateOrder(orderId) {
+            const status = document.getElementById(`status-${orderId}`).value;
+
+            fetch(`/orders/${orderId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ status: status })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Order status updated successfully!");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }
+
+        function updateCustomerName(orderId) {
+            const customerName = document.getElementById(`customerName-${orderId}`).value;
+
+            fetch(`/orders/${orderId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ customer_name: customerName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Customer name updated successfully!");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Failed to update customer name");
+            });
+        }
+
+        function updateItems(orderId) {
+            const items = document.getElementById(`items-${orderId}`).value.split(",");
+
+            fetch(`/orders/${orderId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ items: items })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Items updated successfully!");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Failed to update items");
+            });
+        }
+
+        window.onload = fetchOrders;
+    </script>
+</body>
+</html>
