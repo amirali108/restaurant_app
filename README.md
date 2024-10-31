@@ -20,7 +20,7 @@ This is a simple restaurant management application built with **Flask**, **SQLAl
 -  **[Git](https://git-scm.com/)**
 
 -  ## **Getting Started**
-      $ git clone https://github.com/amirali108/restaurant_app.git
+      $ git clone  https://github.com/amirali108/restaurant_app.git
 
       $ cd restaurant_app
 
@@ -42,15 +42,15 @@ This is a simple restaurant management application built with **Flask**, **SQLAl
 
        $ source venv/bin/activate
 
-2. **Install the required dependencies:**
+3. **Install the required dependencies:**
 
        $ pip install -r requirements.txt
 
-3. **Install the required dependencies:**
+4. **Install the required dependencies:**
    
        $ python app.py
 
-4. **Install the required dependenciesAccess the application in your browser at http://localhost:8000.:**
+5. **Install the required dependenciesAccess the application in your browser at http://localhost:8000.:**
 
    
  ## **Project Structure**
