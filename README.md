@@ -30,7 +30,7 @@ This is a simple restaurant management application built with **Flask**, **SQLAl
        $ docker-compose up -d --build
 
 2. **Access the application in your browser at:**
--  **Home Page: http://localhost:8000**
+-  **Home Page: http://localhost:8000/**
 -  **View Menu: http://localhost:8000/menu**
 -  **Place an Order: http://localhost:8000/order**
 -  **View Orders: http://localhost:8000/view_orders**
